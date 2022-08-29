@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 5</title>
+</head>
+<body>
+<script>
+
+/*
+EJERCICIO 5
+Dado un array de ciudades, sacar en un nuevo array las ciudades no capitales con unos nuevos parámetros que sean city y isSpain.
+El valor de isSpain será un booleano indicando si es una ciudad de España.*/
+
+const arrCities2 = [
+  {city: 'Logroño', country: 'Spain', capital: false},
+  {city: 'Bordeaux', country: 'France', capital: false},
+  {city: 'Madrid', country: 'Spain', capital: true},
+  {city: 'Florence', country: 'Italy', capital: false},  //La capital de Italia es Roma. Cambiamos el valor true por false para que tenga más sentido.
+  {city: 'Oslo', country: 'Norway', capital: true},
+  {city: 'Jaén', country: 'Spain', capital: false}
+]
+
+
+function isSpain(vector){
+
+    const inSpain = [];
+
+    //Añadimos las ciudades que no son capitales
+
+    vector.forEach(elemento => {
+
+        if(elemento.capital == false)
+        {
+            inSpain.push(elemento);
+        }
+    });
+    
+    //Añadimos la propiedad isSpain y eliminamos las propiedades country y capital
+
+    inSpain.forEach(element => {
+
+        if(element.country == "Spain")
+        {
+            element.isSpain = true;
+            delete element.country;
+            delete element.capital;
+        }
+
+        else
+        {
+            element.isSpain = false;
+            delete element.country;
+            delete element.capital;
+        }
+
+    });
+
+    console.log(inSpain)
+}
+
+isSpain(arrCities2);    /* muestra 0: {city: 'Logroño', isSpain: true}
+                                   1: {city: 'Bordeaux', isSpain: false}
+                                   2: {city: 'Florence', isSpain: false}
+                                   3: {city: 'Jaén', isSpain: true} */
+
+
+</script>
+</body>
+</html>

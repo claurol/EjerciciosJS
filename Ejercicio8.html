@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 8</title>
+</head>
+<body>
+<script>
+
+/*
+Ejercicio 8
+Crea una función que convierta un número de bytes en un formato con valores legibles ('B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB')
+La función debe tener 2 parámetros:
+
+ - Primer parámetro debe ser el número de bytes
+ - Segundo parámetro debe ser un número especificando la cantidad de dígitos a los que se debe truncar
+   el resultado (esto se puede hacer con Number.prototype.toPrecision()). Por defecto, este parámetro debe
+   de tener un valor de 3.*/
+
+function bucleBytes(bytes, trunk = 3)
+{
+    let cont = 0;
+
+    while(bytes>=1000 && cont != 8)
+    {
+        bytes = bytes/1000;
+        cont++;
+    }
+
+    bytes = bytes.toPrecision(trunk);
+
+    let ud ="";
+
+    switch (cont)
+    {
+        case 0: ud="B"; break;
+        case 1: ud="KB"; break;
+        case 2: ud="MB"; break;
+        case 3: ud="GB"; break;
+        case 4: ud="TB"; break;
+        case 5: ud="PB"; break;
+        case 6: ud="EB"; break;
+        case 7: ud="ZB"; break;
+        default: ud="YB"; break;
+    }
+
+    console.log(bytes+" "+ud);
+}
+
+bucleBytes(950);                                //muestra 950 B
+bucleBytes(1009);                               //muestra 1.01 KB
+bucleBytes(999900000000, 4)                     //muestra 999.9 GB
+bucleBytes(4000000000000000000000000);          //muestra 4.00 YB
+bucleBytes(5000000000000000000000000000, 6);    //muestra 5000.00 YB
+
+</script>
+</body>
+</html>

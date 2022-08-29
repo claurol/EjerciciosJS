@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 9</title>
+</head>
+<body>
+<script>
+
+/*
+Ejercicio 9
+Crea una función que a partir de un objeto de entrada, retorne un objeto
+asegurándose que las claves del objeto estén en lowercase.
+La función debe tener un objeto como único parámetro. */
+
+const myObject = { NamE: 'Charles', ADDress: 'Home Street' };
+
+function toLowercaseKeys(obj)
+{
+    const pares = Object.entries(obj);
+
+    pares.forEach(function(element)
+    {
+        element[0] = element[0].toLowerCase();
+    });
+
+    const lowercase = Object.fromEntries(pares);
+
+    return(lowercase);
+}
+
+const myObjLowercase = toLowercaseKeys(myObject);
+
+console.log(myObjLowercase);    //muestra {name: 'Charles', address: 'Home Street'}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 6</title>
+</head>
+<body>
+<script>
+
+/*
+EJERCICIO 6
+Crea una función que redondee un numero float a un numero especifico de decimales. 
+La función debe tener dos parametros: 
+Primer parametro es un numero float con x decimales
+Segundo parametro es un int que indique el numero de decimales al que redondear
+Evitar usar el método toFixed() */
+
+function roundTo(num,dec) {
+
+//comprobamos que el primer argumento sea un numero
+
+if(isNaN(num) == true)
+{
+    return ("Ejercicio 6. Debes introducir un número para poder llevar a cabo el redondeo.")
+}
+
+//comprobamos que el segundo argumento sea un entero
+
+else if(Number.isInteger(dec) == false)
+{
+    return ("El número de decimales tiene que ser un número entero.")
+}
+
+//si todo es correcto, redondeamos:
+
+else
+{
+    let decimal = 1;
+
+    for(let i=1; i<=dec; i++)
+    {
+        decimal *= 10;
+    }
+
+    return Math.round(num*decimal) / decimal;
+}
+}
+
+var roundNumber1 = roundTo(1.048, 2);
+var roundNumber2 = roundTo(0.0005, 3);
+
+console.log(roundNumber1);   //muestra 1.05
+console.log(roundNumber2);   //muestra 0.001
+
+</script>
+</body>
+</html>

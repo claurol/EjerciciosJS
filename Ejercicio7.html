@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 7</title>
+</head>
+<body>
+<script>
+
+/*
+Ejercicio 7
+Crea una función que retorne los campos de un objeto que equivalgan a un valor “falsy” después de ser ejecutados por una función específica.
+La función debe tener dos parámetros:
+
+    - Primer parámetro es un objeto con x número de campos y valores
+    - Segundo parametro es una funcion que retorne un booleano, que se tiene que aplicar al objeto del primer parámetro */
+
+
+const obj = {color: "white", size: null, weight: 0, length: "", material: "wood", available: false}
+
+//Creamos returnFalsyValues, que recibirá un objeto y una función. returnFalsyValues ejecuta la función recibida con el objeto recibido como parámetro de esta.
+
+function returnFalsyValues(object, func)
+{
+     return func(object);
+}
+
+//la función falsy es la función que vamos a pasar a returnFalsyValues.
+
+function falsy(objeto)
+{
+    let falsyObject = {};
+
+    for(prop in objeto)
+    {
+        if(Boolean(objeto[prop]) == false)
+        {
+        falsyObject[prop] = objeto[prop];
+        }
+    }
+
+    return falsyObject;
+}
+
+const resultado = returnFalsyValues(obj, falsy);
+
+console.log(resultado); //muestra {size: null, weight: 0, length: '', available: false}
+
+</script>
+</body>
+</html>

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 4</title>
+</head>
+<body>
+<script>
+
+/*
+EJERCICIO 4
+Dado tres arrays de números, sacar en un nuevo array la intersección de estos. */
+
+const arrNumber1 = [1,2,3];
+const arrNumber2 = [1,2,3,4,5];
+const arrNumber3 = [1,4,7,2];
+
+function interseccion3(vector1, vector2, vector3)
+{
+    //Comprobamos que los argumentos pasados son arrays
+
+    if(Array.isArray(vector1) == false || Array.isArray(vector2) == false || Array.isArray(vector3) == false)
+    {
+    return("Los parámetros deben ser arrays.")
+    }
+
+    //Obtenemos la intersección de los dos primeros arrays
+
+    const inter1 = [];
+
+    for(let i=0; i<vector1.length; i++)
+    {
+        for(let j=0; j<vector2.length; j++)
+        {
+            if(vector1[i] == vector2[j])
+            {
+                inter1.push(vector1[i]);
+            }
+        }
+    }
+
+    //Obtenemos la intersección de la intersección de los dos primeros arrays con el tercero
+
+    const inter2 = [];
+
+    for(let i=0; i<inter1.length; i++)
+    {
+        for(let j=0; j<vector3.length; j++)
+        {
+            if(inter1[i] == vector3[j])
+            {
+                inter2.push(vector3[j]);
+            }
+        }
+    }
+
+    return(inter2);
+}
+
+const inter = interseccion3(arrNumber1,arrNumber2,arrNumber3);    
+
+console.log(inter); //muestra [1, 2]
+
+</script>
+</body>
+</html>

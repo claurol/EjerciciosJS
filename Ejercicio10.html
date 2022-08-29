@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 10</title>
+</head>
+<body>
+<script>
+
+/*
+Ejercicio 10
+Crea una función que elimine las etiquetas html o xml de un string.
+La función debe tener un string como único parámetro. */
+
+let html = '<div><span>lorem</span><strong>ipsum</strong></div>', html2 = "lorem<strong>ipsum</strong>";
+
+function fueraEtiquetas(str)
+{
+    //Creamos la variable sinEtiquetas para guardar el resultado de la función en ella,
+    //y la variable estado cuya misión es determinar si el caracter debe ser añadido (valor anadir) a la variable sinEtiquetas, o si debe ser omitido (valor borrar).
+
+    let sinEtiquetas = "", estado = "anadir";
+
+    for(let i=0; i<str.length; i++)
+    {
+        if(str[i] == "<")
+        {
+            estado = "borrar";
+
+            if (sinEtiquetas[sinEtiquetas.length - 1] != " ")
+            {
+                sinEtiquetas += " ";
+            }
+        }
+
+        else if(estado == "anadir")
+        {
+            sinEtiquetas += str[i];
+        }
+
+        else if(str[i] == ">")
+        {
+            estado = "anadir";
+        }
+    }
+
+    //Eliminamos los posibles espacios del principio
+
+    while(sinEtiquetas[0] == " ")
+    {
+        sinEtiquetas = sinEtiquetas.replace(" ","");
+    }
+
+    console.log(sinEtiquetas);
+}
+
+
+fueraEtiquetas(html);   //muestra lorem ipsum
+fueraEtiquetas(html2);  //muestra lorem ipsum
+
+
+</script>
+</body>
+</html>

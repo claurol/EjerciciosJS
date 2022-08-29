@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejercicio 2</title>
+</head>
+<body>
+<script>
+
+/*
+EJERCICIO 2
+Dado un array de valores, devolver un array truthy
+(sin valores nulos, vacios, no numeros, indefinidos o falsos) */
+
+const arrDirty = [NaN, 0, 5, false, -1, '',undefined, 3, null, 'test']
+
+function clean(vector){
+
+    const truthy = [];
+
+    for(let i = 0; i<vector.length; i++)
+    {
+        if (Boolean(vector[i]) !== false)   //la funcion Boolean devuelve false al pasarle un 0, una cadena vacia, un false, un undefinied, un NaN o un null.
+        {
+            truthy.push(vector[i]);
+        }
+    }
+
+    console.log(truthy);
+}
+
+clean(arrDirty);    //muestra [5, -1, 3, 'test']
+
+</script>
+</body>
+</html>
