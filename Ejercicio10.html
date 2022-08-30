@@ -44,12 +44,9 @@ function fueraEtiquetas(str)
         }
     }
 
-    //Eliminamos los posibles espacios del principio
+    //Eliminamos los posibles espacios del principio con el método trim.
 
-    while(sinEtiquetas[0] == " ")
-    {
-        sinEtiquetas = sinEtiquetas.replace(" ","");
-    }
+    sinEtiquetas = sinEtiquetas.trim();
 
     console.log(sinEtiquetas);
 }
